@@ -16,4 +16,8 @@ router.get('/json', async (ctx, next) => {
   }
 })
 
+router.post('/delivery',async(ctx,next) =>{
+    ctx.body = 'I am delivering :)'
+})
+
 module.exports = router
