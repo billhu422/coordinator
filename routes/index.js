@@ -60,7 +60,7 @@ asyncRequest= async (opts)=>{
 }
 
 router.post('/whip',async(ctx,next) =>{
-    ctx.body = 'I am whipping :)'
+    //ctx.body = 'I am whipping :)'
     //1.read from mysql
     //2.update note to paying
     //3.update note to paied or ''
@@ -79,11 +79,11 @@ router.post('/whip',async(ctx,next) =>{
     var data = await asyncQuery(client)
     //read order & update note.text to Paid
     if(data.length == 0){
-        console.log('nothing');
+        //console.log('nothing');
         return;
     }else{
         for(var i = 0; i < data.length; i++) {
-            //console.log("%s\t%s\t%s",data[i].ID,data[i].STATE_,data[i].TEXT)
+            console.log("%s--%s\t%s\t%s",new Date().toLocaleString(),data[i].ID,data[i].STATE_,data[i].TEXT);
             var x = await asyncUpdate(client,data[i].ID,'Paid');
         }
     }
@@ -116,7 +116,7 @@ router.post('/whip',async(ctx,next) =>{
         }
         //console.log(opts_deliverycvm)
         cvmdata = await asyncRequest(opts_deliverycvm)
-        console.log(cvmdata)
+        console.log("%s--%s",new Date().toLocaleString(),cvmdata);
     }
 })
 
