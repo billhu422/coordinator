@@ -60,7 +60,7 @@ asyncRequest= async (opts)=>{
 }
 
 router.post('/whip',async(ctx,next) =>{
-    //ctx.body = 'I am whipping :)'
+    ctx.body = ''
     //1.read from mysql
     //2.update note to paying
     //3.update note to paied or ''
@@ -80,6 +80,7 @@ router.post('/whip',async(ctx,next) =>{
     //read order & update note.text to Paid
     if(data.length == 0){
         //console.log('nothing');
+        client.end();
         return;
     }else{
         for(var i = 0; i < data.length; i++) {
